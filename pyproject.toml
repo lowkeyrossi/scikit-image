@@ -26,7 +26,7 @@ classifiers = [
 dynamic = ['version']
 dependencies = [
     'numpy>=1.24',
-    'scipy>=1.11.4',
+    'scipy>=1.11.4; not (sys_platform == "win32" and platform_machine == "ARM64")', #SciPy for WoA is not yet released
     'networkx>=3.0',
     'pillow>=10.1',
     'imageio>=2.33,!=2.35.0',
