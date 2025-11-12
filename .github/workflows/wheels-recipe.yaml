@@ -49,13 +49,25 @@ jobs:
             windows-latest,
             windows-11-arm,
           ]
+        
         build: ["cp31{1,2}*", "cp313*", "cp314*"]
-
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Set up Python (x64)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+      - name: Set up Python (ARM64)
+        if: matrix.os == 'windows-11-arm'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: 'arm64'
       - name: Set up LLVM for ARM64
         if: matrix.os == 'windows-11-arm'
         uses: ./.github/windows_arm64_steps
