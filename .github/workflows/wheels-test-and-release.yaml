@@ -6,7 +6,7 @@ on:
     tags:
       - v*
     branches:
-      - maintenance/**
+      - woa
   pull_request:
     paths:
       - ".github/workflows/wheels-test-and-release.yaml"
